@@ -5,6 +5,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# SSL
+ssl/*
+
 # Runtime data
 pids
 *.pid
@@ -55,7 +58,8 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+.env.local
+.env.*.local
 
 # Transpiled JavaScript files from Typescript
 /dist

@@ -1,0 +1,82 @@
+{
+  "extends": [
+    "@loopback/eslint-config"
+  ],
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "semi": "off",
+    "quotes": "off",
+    "object-curly-spacing": ["error", "always"],
+    "@typescript-eslint/semi": ["error", "always"],
+    "@typescript-eslint/quotes":  ["error", "double"],
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "next" }],
+    "@typescript-eslint/comma-dangle": ["error", "always-multiline"],
+    "@typescript-eslint/member-delimiter-style": ["error", {
+      "multiline": { "delimiter": "semi", "requireLast": true },
+      "singleline": { "delimiter": "semi", "requireLast": false }
+    }],
+    "import/no-duplicates": "error",
+    "import/no-extraneous-dependencies": "error",
+    "import/order": ["error", {
+      "pathGroups": [
+        {
+          "pattern": "@src/**",
+          "group": "unknown",
+          "position": "before"
+        },
+        // ------
+        {
+          "pattern": "@core/**",
+          "group": "unknown"
+        },
+        // ------
+        {
+          "pattern": "@datasources",
+          "group": "internal"
+        },
+        {
+          "pattern": "@repositories",
+          "group": "internal"
+        },
+        // ------
+        {
+          "pattern": "@models",
+          "group": "internal",
+          "position": "after"
+        },
+        {
+          "pattern": "@controllers",
+          "group": "internal",
+          "position": "after"
+        }
+      ],
+      "pathGroupsExcludedImportTypes": ["builtin"],
+      "groups": [
+        "builtin",
+        "external",
+        "unknown",
+        "internal",
+        ["sibling", "parent"],
+        "index",
+        "object",
+        "type"
+      ],
+      "newlines-between": "always",
+      "alphabetize": {
+        "order": "asc"
+      }
+    }]
+  },
+  "overrides": [{
+    "files": ["tests/**"],
+    "rules": {
+      "@typescript-eslint/unbound-method": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/ban-ts-comment": ["error", {
+        "ts-ignore": "allow-with-description"
+      }]
+    }
+  }]
+}

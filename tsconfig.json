@@ -2,8 +2,21 @@
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "@loopback/build/config/tsconfig.common.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "typeRoots": [
+      "node_modules/@types",
+      "src/**/*.d.ts"
+    ],
+    "paths": {
+      "@src*": ["src*"],
+      "@core*": ["src/core*"],
+      "@controllers": ["src/controllers"],
+      "@datasources": ["src/datasources"],
+      "@models": ["src/models"],
+      "@repositories": ["src/repositories"]
+    }
   },
   "include": ["src"]
 }

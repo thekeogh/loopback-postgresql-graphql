@@ -1,16 +1,18 @@
-import {BootMixin} from '@loopback/boot';
-import {ApplicationConfig} from '@loopback/core';
+import path from "path";
+
+import { BootMixin } from "@loopback/boot";
+import { ApplicationConfig } from "@loopback/core";
+import { RepositoryMixin } from "@loopback/repository";
+import { RestApplication } from "@loopback/rest";
 import {
   RestExplorerBindings,
   RestExplorerComponent,
-} from '@loopback/rest-explorer';
-import {RepositoryMixin} from '@loopback/repository';
-import {RestApplication} from '@loopback/rest';
-import {ServiceMixin} from '@loopback/service-proxy';
-import path from 'path';
-import {MySequence} from './sequence';
+} from "@loopback/rest-explorer";
+import { ServiceMixin } from "@loopback/service-proxy";
 
-export {ApplicationConfig};
+import { MySequence } from "@src/sequence";
+
+export { ApplicationConfig };
 
 export class Application extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
@@ -22,11 +24,11 @@ export class Application extends BootMixin(
     this.sequence(MySequence);
 
     // Set up default home page
-    this.static('/', path.join(__dirname, '../public'));
+    this.static("/", path.join(__dirname, "../public"));
 
     // Customize @loopback/rest-explorer configuration here
     this.configure(RestExplorerBindings.COMPONENT).to({
-      path: '/explorer',
+      path: "/explorer",
     });
     this.component(RestExplorerComponent);
 
@@ -35,8 +37,8 @@ export class Application extends BootMixin(
     this.bootOptions = {
       controllers: {
         // Customize ControllerBooter Conventions here
-        dirs: ['controllers'],
-        extensions: ['.controller.js'],
+        dirs: ["controllers"],
+        extensions: [".controller.js"],
         nested: true,
       },
     };
