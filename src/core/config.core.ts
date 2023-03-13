@@ -9,6 +9,7 @@ export const config = {
     https: process.env.HTTPS === "true",
     sslCertFile: process.env.SSL_CERT_FILE,
     sslKeyFile: process.env.SSL_KEY_FILE,
+    sslCertSkipVerification: process.env.SSL_CERT_SKIP_VERIFICATION === "true" || false,
   },
 
   /**

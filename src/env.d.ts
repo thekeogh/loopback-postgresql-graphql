@@ -14,6 +14,7 @@ declare namespace NodeJS {
     HTTPS: string;
     SSL_CERT_FILE: string;
     SSL_KEY_FILE: string;
+    SSL_CERT_SKIP_VERIFICATION: string;
     // Database
     DB_HOST: string;
     DB_PORT: number;
