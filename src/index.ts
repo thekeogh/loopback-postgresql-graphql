@@ -36,7 +36,8 @@ export async function main(options: ApplicationConfig = {}) {
   app.mountExpressRouter(gqlPath, createHandler({ schema }) );
   // Log the status to the console
   log(chalk.green(`  ${chalk.bgGreen.hex("#000000").bold(" ✓ ")} Environment: ${chalk.yellow.bold(config.environment.env)}`));
-  log(chalk.green(`  ${chalk.bgGreen.hex("#000000").bold(" ✓ ")} URL: ${chalk.yellow.bold(url)}`));
+  log(chalk.green(`  ${chalk.bgGreen.hex("#000000").bold(" ✓ ")} RESTful URL: ${chalk.yellow.bold(url)}`));
+  log(chalk.green(`  ${chalk.bgGreen.hex("#000000").bold(" ✓ ")} GraphQL URL: ${chalk.yellow.bold(`${url}/graphql`)}`));
   log(chalk.white.dim("  Press CTRL-C to stop server\n"));
   // Return the app
   return app;
