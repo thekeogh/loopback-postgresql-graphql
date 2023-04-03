@@ -40,7 +40,7 @@
     "docker:build": "docker build -t loopback-psql-graphql .",
     "docker:run": "docker run -p 3000:3000 -d loopback-psql-graphql",
     "premigrate": "npm run build",
-    "migrate": "node ./dist/migrate",
+    "migrate": "node -r module-alias/register -r dotenv-flow/config ./dist/migrate",
     "preopenapi-spec": "npm run build",
     "openapi-spec": "node ./dist/openapi-spec",
     "prestart": "npm run rebuild",

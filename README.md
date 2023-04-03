@@ -59,7 +59,7 @@ Although designed with PostgreSQL in mind, there is no reason why you cannot cha
 Once you have entered your database credentials [above](#setup), PostgreSQL is ready to go out-the-box. There is an example `user` model in the `models/` folder ready to go, to migrate this:
 
 ```shell
-npm run migrate
+NODE_ENV=development npm run migrate
 ```
 
 Now check your database and you should see a `user` table.
