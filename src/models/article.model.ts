@@ -1,9 +1,9 @@
-import { Entity, model, property, hasMany } from "@loopback/repository";
+import { Entity, model, property, belongsTo } from "@loopback/repository";
 
-import { Article } from "@models";
+import { User, UserWithRelations } from "@models";
 
 @model()
-export class User extends Entity {
+export class Article extends Entity {
 
   /**
    * ID
@@ -21,25 +21,28 @@ export class User extends Entity {
   id?: string;
 
   /**
-   * Name
+   * User ID
+   */
+  @belongsTo(() => User, undefined, {
+    type: "string",
+    required: true,
+    postgresql: {
+      columnName: "user_id",
+    },
+  })
+  userId: string;
+
+  /**
+   * Title
    */
   @property({
     type: "string",
     required: true,
     postgresql: {
-      columnName: "name",
+      columnName: "title",
     },
   })
-  name?: string;
-
-  /**
-   * Email
-   */
-  @property({
-    type: "string",
-    required: true,
-  })
-  email: string;
+  title: string;
 
   /**
    * Created at
@@ -66,19 +69,13 @@ export class User extends Entity {
   })
   updatedAt: Date;
 
-  /**
-   * Articles
-   */
-  @hasMany(() => Article, { keyTo: "userId" })
-  articles?: Article[];
-
-  constructor(data?: Partial<User>) {
+  constructor(data?: Partial<Article>) {
     super(data);
   }
 }
 
-export interface UserRelations {
-  // describe navigational properties here
+export interface ArticleRelations {
+  user?: UserWithRelations;
 }
 
-export type UserWithRelations = User & UserRelations;
+export type ArticleWithRelations = Article & ArticleRelations;
